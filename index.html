@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shubham Kale | Full Stack Developer</title>
+  <meta name="description" content="Shubham Kale is a Full Stack Developer from Pune who builds backend systems with Java, Spring Boot, Kafka, Redis and Elasticsearch.">
+  <meta name="theme-color" content="#0b1226">
+  <meta property="og:title" content="Shubham Kale | Full Stack Developer">
+  <meta property="og:description" content="Java and Spring Boot developer from Pune. Projects, experience and contact.">
+  <meta property="og:type" content="website">
+
+  <!-- If JavaScript is on, add class "js" so scroll-reveal animations can start hidden. -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Scroll progress: thin bar on top + colourful bar on the right edge -->
+  <div class="progress-top" id="progressTop" aria-hidden="true"></div>
+  <div class="progress-side" id="progressSide" aria-hidden="true"></div>
+
+  <!-- ===================== NAVBAR (slides down after the hero) ===================== -->
+  <header class="site-nav" id="siteNav">
+    <a class="logo" href="#home" aria-label="Go to top">
+      <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="17" y="2"  width="14" height="14" rx="3" transform="rotate(45 24 9)"  fill="#2f7bff"/>
+        <rect x="2"  y="17" width="14" height="14" rx="3" transform="rotate(45 9 24)"  fill="#ff4d4d"/>
+        <rect x="32" y="17" width="14" height="14" rx="3" transform="rotate(45 39 24)" fill="#ffc21a"/>
+        <rect x="17" y="32" width="14" height="14" rx="3" transform="rotate(45 24 39)" fill="#2fd07a"/>
+      </svg>
+      <span class="logo-text">Shubham</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">Menu</button>
+
+    <nav aria-label="Main">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" data-spy="about">About</a></li>
+        <li><a href="#projects" data-spy="projects">Projects</a></li>
+        <li><a href="#coding" data-spy="coding">Coding Profile</a></li>
+        <li><a href="#skills" data-spy="skills">Skills</a></li>
+        <li><a href="#education" data-spy="education">Education</a></li>
+        <li><a href="#experience" data-spy="experience">Experience</a></li>
+        <li><a href="#contact" data-spy="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="home" class="hero">
+      <!-- TIP: to use your own photo/background here, save it as assets/hero-bg.jpg. The CSS picks it up automatically. -->
+      <div class="hero-content">
+        <p class="hero-greeting">Hi, I'm</p>
+        <h1 class="hero-name"><span class="n1">Shubham</span> <span class="n2">Kale</span></h1>
+        <p class="hero-role"><strong>Full Stack Developer</strong> <span class="bar">|</span> <strong>Java and Spring Boot</strong></p>
+
+        <div class="hero-buttons">
+          <a class="btn-resume" href="assets/Shubham_Kale_Resume.pdf" download>Resume</a>
+          <a class="btn-contact" href="#contact">Contact</a>
+        </div>
+
+        <ul class="hero-social">
+          <li><a href="https://www.linkedin.com/in/kale-shubham" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="assets/social/linkedin.svg" alt=""></a></li>
+          <li><a href="https://github.com/Shubhamkale1" target="_blank" rel="noopener" aria-label="GitHub"><img src="assets/social/github.svg" alt=""></a></li>
+          <li><a href="https://leetcode.com/u/shubham_96k/" target="_blank" rel="noopener" aria-label="LeetCode"><img src="assets/social/leetcode.svg" alt=""></a></li>
+          <li><a href="https://instagram.com/Shubu1912" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/social/instagram.svg" alt=""></a></li>
+          <li><a href="mailto:shubhamkale.sits.comp@gmail.com" aria-label="Email"><img src="assets/social/email.svg" alt=""></a></li>
+        </ul>
+      </div>
+
+      <a class="scroll-hint" href="#about" aria-label="Scroll down"><span class="mouse"><span class="wheel"></span></span></a>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="section about">
+      <h2 class="title-center reveal">About Me</h2>
+
+      <div class="about-inner">
+        <div class="about-text reveal">
+          <p class="about-quote">
+            <span class="q q-open">&ldquo;</span>
+            Hi, I am Shubham Kale, a Computer Science Engineer from
+            <span class="pink">Sinhgad Institute of Technology and Science, Pune</span>.
+            <span class="q q-close">&rdquo;</span>
+          </p>
+          <p class="about-line">
+            I'm a Full Stack Developer focused on building scalable and reliable backend systems with
+            Java and Spring Boot, using Kafka, Redis and Elasticsearch.
+          </p>
+        </div>
+
+        <div class="about-photo reveal">
+          <img src="assets/photo.jpg" alt="Portrait of Shubham Kale" width="720" height="778">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects" class="section projects">
+      <div class="wrap">
+        <h2 class="proj-title reveal">
+          <svg class="fork" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="12" cy="10" r="5" fill="#4f7cff"/><circle cx="36" cy="10" r="5" fill="#19e6c1"/><circle cx="24" cy="40" r="5" fill="#19e6c1"/>
+            <path d="M12 15v6c0 4 4 6 12 6s12-2 12-6v-6M24 27v8" stroke="#4f7cff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+          PROJECTS
+        </h2>
+        <p class="proj-sub reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" fill="#ff7a1a"/></svg>
+          Some Pinned Project
+        </p>
+
+        <!-- ---------- Project 01 ---------- -->
+        <article class="pin-card reveal">
+          <h3><span>01.</span> Event Management Platform</h3>
+          <div class="pin-grid">
+            <div class="slider" data-slider>
+              <div class="slides">
+                <img src="assets/projects/event-1.svg" alt="Event Management Platform architecture: Spring Boot API with JWT, Redis, Elasticsearch and Kafka">
+                <img src="assets/projects/event-2.svg" alt="Event Management Platform highlights: 80+ REST APIs, RBAC, JWT and OAuth2">
+              </div>
+              <button class="s-btn s-prev" type="button" aria-label="Previous image">&#10094;</button>
+              <button class="s-btn s-next" type="button" aria-label="Next image">&#10095;</button>
+              <div class="s-dots"></div>
+            </div>
+
+            <div class="pin-info">
+              <ul class="bullets">
+                <li>Production-grade platform with <b class="hl">80+ REST APIs</b> on Spring Boot 3.x, with <b class="hl">JWT</b>, <b class="hl">OAuth2 (Google login)</b> and role-based access control.</li>
+                <li>Redis caching, Elasticsearch fuzzy search, auto-geocoding and AI recommendations with <b class="hl">Spring AI</b>. Grown from monolith to microservices using Kafka, Docker and CI/CD.</li>
+              </ul>
+              <ul class="chips">
+                <li>Java</li><li>Spring Boot</li><li>Redis</li><li>Elasticsearch</li><li>Kafka</li><li>Docker</li>
+              </ul>
+              <div class="pin-links">
+                <a href="https://github.com/Shubhamkale1/Event-Manager" target="_blank" rel="noopener" aria-label="Event Manager on GitHub"><img src="assets/social/github-teal.svg" alt=""></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- Project 02 ---------- -->
+        <article class="pin-card reveal">
+          <h3><span>02.</span> AI Research Assistant</h3>
+          <div class="pin-grid">
+            <div class="slider" data-slider>
+              <div class="slides">
+                <img src="assets/projects/research-1.svg" alt="AI Research Assistant flow: Chrome extension to Spring Boot API to Gemini AI">
+                <img src="assets/projects/research-2.svg" alt="AI Research Assistant highlights: 60% efficiency, 200+ users">
+              </div>
+              <button class="s-btn s-prev" type="button" aria-label="Previous image">&#10094;</button>
+              <button class="s-btn s-next" type="button" aria-label="Next image">&#10095;</button>
+              <div class="s-dots"></div>
+            </div>
+
+            <div class="pin-info">
+              <ul class="bullets">
+                <li>A <b class="hl">Chrome extension</b> with a React frontend that reads the text you select on a page and returns a short summary. No copy-paste needed.</li>
+                <li>Secure pipeline with a Java REST API and <b class="hl">Gemini AI</b> that improved research efficiency by <b class="hl">60%</b> for <b class="hl">200+ users</b>.</li>
+              </ul>
+              <ul class="chips">
+                <li>JavaScript</li><li>React</li><li>Spring Boot</li><li>Java</li><li>Gemini AI</li>
+              </ul>
+              <div class="pin-links">
+                <a href="https://github.com/Shubhamkale1/Research-Assistant" target="_blank" rel="noopener" aria-label="Research Assistant on GitHub"><img src="assets/social/github-teal.svg" alt=""></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- Project 03 ---------- -->
+        <article class="pin-card reveal">
+          <h3><span>03.</span> Banking Portal API</h3>
+          <div class="pin-grid">
+            <div class="slider" data-slider>
+              <div class="slides">
+                <img src="assets/projects/bank-1.svg" alt="Banking Portal API architecture: Spring Boot with Spring Security and JWT">
+                <img src="assets/projects/bank-2.svg" alt="Banking Portal API highlights: JWT, Redis blacklist, Actuator, Docker">
+              </div>
+              <button class="s-btn s-prev" type="button" aria-label="Previous image">&#10094;</button>
+              <button class="s-btn s-next" type="button" aria-label="Next image">&#10095;</button>
+              <div class="s-dots"></div>
+            </div>
+
+            <div class="pin-info">
+              <ul class="bullets">
+                <li>RESTful banking backend with <b class="hl">account management</b>, <b class="hl">fund transfers</b> and <b class="hl">transaction tracking</b>.</li>
+                <li>Secured with <b class="hl">Spring Security</b> and <b class="hl">JWT</b>, with proper exception handling, and deployed using Docker.</li>
+              </ul>
+              <ul class="chips">
+                <li>Spring Boot</li><li>Spring Security</li><li>JWT</li><li>Redis</li><li>Docker</li>
+              </ul>
+              <div class="pin-links">
+                <a href="https://github.com/Shubhamkale1/BankingPortal-API" target="_blank" rel="noopener" aria-label="Banking Portal API on GitHub"><img src="assets/social/github-teal.svg" alt=""></a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== OTHER PROJECTS (carousel) ===================== -->
+    <section class="section others">
+      <div class="wrap">
+        <p class="proj-sub reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" fill="#ff7a1a"/></svg>
+          Some Other Valuable Project
+        </p>
+
+        <div class="carousel reveal" data-carousel>
+          <button class="c-btn c-prev" type="button" aria-label="Scroll left">&#10094;</button>
+          <div class="c-track">
+            <article class="mini-card">
+              <img src="assets/projects/leetcode.svg" alt="LeetCode Solutions: 150+ Java solutions organized by topic">
+              <div class="mini-foot">
+                <h3>LeetCode Solutions</h3>
+                <a href="https://github.com/Shubhamkale1/LeetCode-Solutions" target="_blank" rel="noopener" aria-label="LeetCode Solutions on GitHub"><img src="assets/social/github-teal.svg" alt=""></a>
+              </div>
+            </article>
+
+            <article class="mini-card">
+              <img src="assets/projects/portfolio.svg" alt="Portfolio website built with HTML, CSS and JavaScript">
+              <div class="mini-foot">
+                <h3>Portfolio Website</h3>
+                <a href="https://github.com/Shubhamkale1/Shubhamkale1.github.io" target="_blank" rel="noopener" aria-label="Portfolio on GitHub"><img src="assets/social/github-teal.svg" alt=""></a>
+              </div>
+            </article>
+          </div>
+          <button class="c-btn c-next" type="button" aria-label="Scroll right">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CODING PROFILE ===================== -->
+    <section id="coding" class="section coding">
+      <canvas id="codingParticles"></canvas>
+      <h2 class="title-line reveal">Coding Profile</h2>
+
+      <!-- Numbers count up from 0 when this row scrolls into view -->
+      <ul class="counters reveal">
+        <li><b class="count" data-target="200" data-suffix="+">0</b><span>DSA problems solved</span></li>
+        <li><b class="count" data-target="150" data-suffix="+">0</b><span>Java solutions on GitHub</span></li>
+        <li><b class="count" data-target="80" data-suffix="+">0</b><span>REST APIs in Event Manager</span></li>
+      </ul>
+
+      <div class="coding-grid">
+        <article class="stat-card reveal">
+          <div class="stat-face tilt">
+          <h3><img src="assets/social/leetcode.svg" alt="" class="stat-logo"> LeetCode</h3>
+          <a class="stat-img-wrap" href="https://leetcode.com/u/shubham_96k/" target="_blank" rel="noopener">
+            <img class="stat-img" src="https://leetcard.jacoblin.cool/shubham_96k?theme=dark&font=Recursive&ext=activity" alt="LeetCode stats for shubham_96k" loading="lazy">
+            <span class="stat-fallback">200+ DSA problems solved. Open my LeetCode profile.</span>
+          </a>
+          </div>
+        </article>
+
+        <article class="stat-card reveal">
+          <div class="stat-face tilt">
+          <h3><img src="assets/icons/github.svg" alt="" class="stat-logo stat-logo-white"> GitHub</h3>
+          <a class="stat-img-wrap" href="https://github.com/Shubhamkale1" target="_blank" rel="noopener">
+            <img class="stat-img" src="https://github-readme-stats-sigma-five.vercel.app/api?username=Shubhamkale1&show_icons=true&theme=dark" alt="GitHub stats for Shubhamkale1" loading="lazy">
+            <span class="stat-fallback">See my projects and contributions on GitHub.</span>
+          </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
+    <section id="skills" class="section skills">
+      <h2 class="title-center reveal">Skill / Expertise</h2>
+      <div class="divider reveal" aria-hidden="true"><i></i><b></b><b></b><i></i></div>
+
+      <div class="skills-inner">
+        <h3 class="skill-head reveal">Languages and Frameworks</h3>
+        <ul class="icon-grid reveal">
+          <li><img src="assets/icons/java.svg" alt="Java"><span>Java</span></li>
+          <li><img src="assets/icons/spring.svg" alt="Spring Boot"><span>Spring Boot</span></li>
+          <li><img src="assets/icons/hibernate.svg" alt="Hibernate"><span>Hibernate</span></li>
+          <li><img src="assets/icons/javascript.svg" alt="JavaScript"><span>JavaScript</span></li>
+          <li><img src="assets/icons/react.svg" alt="React"><span>React</span></li>
+          <li><img src="assets/icons/python.svg" alt="Python"><span>Python</span></li>
+          <li><img src="assets/icons/html5.svg" alt="HTML5"><span>HTML</span></li>
+          <li><img src="assets/icons/css3.svg" alt="CSS3"><span>CSS</span></li>
+        </ul>
+
+        <h3 class="skill-head reveal">Databases</h3>
+        <ul class="icon-grid reveal">
+          <li><img src="assets/icons/mysql.svg" alt="MySQL"><span>MySQL</span></li>
+          <li><img src="assets/icons/postgresql.svg" alt="PostgreSQL"><span>PostgreSQL</span></li>
+          <li><img src="assets/icons/mongodb.svg" alt="MongoDB"><span>MongoDB</span></li>
+          <li><img src="assets/icons/redis.svg" alt="Redis"><span>Redis</span></li>
+          <li><img src="assets/icons/elasticsearch.svg" alt="Elasticsearch"><span>Elasticsearch</span></li>
+        </ul>
+
+        <h3 class="skill-head reveal">Tools</h3>
+        <ul class="icon-grid reveal">
+          <li><img src="assets/icons/kafka.svg" alt="Kafka"><span>Kafka</span></li>
+          <li><img src="assets/icons/docker.svg" alt="Docker"><span>Docker</span></li>
+          <li><img src="assets/icons/kubernetes.svg" alt="Kubernetes"><span>Kubernetes</span></li>
+          <li><img src="assets/icons/git.svg" alt="Git"><span>Git</span></li>
+          <li><img src="assets/icons/github.svg" alt="GitHub" class="on-dark"><span>GitHub</span></li>
+          <li><img src="assets/icons/maven.svg" alt="Maven"><span>Maven</span></li>
+          <li><img src="assets/icons/postman.svg" alt="Postman"><span>Postman</span></li>
+          <li><img src="assets/icons/linux.svg" alt="Linux"><span>Linux</span></li>
+          <li><img src="assets/icons/jira.svg" alt="Jira"><span>Jira</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== EDUCATION ===================== -->
+    <section id="education" class="section education">
+      <div class="edu-scene">
+        <span class="cloud c1" aria-hidden="true"></span>
+        <span class="cloud c2" aria-hidden="true"></span>
+        <span class="cloud c3" aria-hidden="true"></span>
+        <h2 class="title-line reveal">Education</h2>
+
+        <div class="zigzag">
+          <div class="z-item z-left reveal">
+            <span class="z-year">2020 &ndash; 2024</span>
+            <div class="z-card">
+              <svg class="z-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+              <h3>Bachelor of Engineering</h3>
+              <p class="z-sub">- Computer Science</p>
+              <p class="z-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.5 1L2 6v2h19V6m-5 4v7h3v-7M2 22h19v-3H2m8-9v7h3v-7m-9 0v7h3v-7z"/></svg> Sinhgad Institute of Technology and Science, Pune</p>
+              <p class="z-text">Completed my B.E. in Computer Science in Jun 2024.<br>Graduated with CGPA : <b class="orange">7.37</b></p>
+            </div>
+          </div>
+
+          <div class="z-item z-right reveal">
+            <span class="z-year">2020</span>
+            <div class="z-card">
+              <svg class="z-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+              <h3>Higher Secondary (HSC)</h3>
+              <p class="z-sub">- Class XII</p>
+              <p class="z-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.5 1L2 6v2h19V6m-5 4v7h3v-7M2 22h19v-3H2m8-9v7h3v-7m-9 0v7h3v-7z"/></svg> Shri Shaneshwar Vidya Mandir, Sonai</p>
+              <p class="z-text">Completed my 12th standard in <b class="orange">2020</b>.</p>
+            </div>
+          </div>
+
+          <div class="z-item z-left reveal">
+            <span class="z-year">2018</span>
+            <div class="z-card">
+              <svg class="z-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+              <h3>Secondary School (SSC)</h3>
+              <p class="z-sub">- Class X</p>
+              <p class="z-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.5 1L2 6v2h19V6m-5 4v7h3v-7M2 22h19v-3H2m8-9v7h3v-7m-9 0v7h3v-7z"/></svg> D.B. Ghumare Public School, Beed</p>
+              <p class="z-text">Completed my 10th standard in <b class="orange">2018</b>.</p>
+            </div>
+          </div>
+
+          <div class="z-item z-right reveal">
+            <span class="z-year">Certifications</span>
+            <div class="z-card">
+              <svg class="z-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+              <h3>Courses and Certificates</h3>
+              <p class="z-sub">- Java and Project Management</p>
+              <p class="z-text">Java Data Structures and Algorithms, <b class="orange">Core2Web</b><br>Jira Fundamentals, <b class="orange">LinkedIn</b></p>
+            </div>
+          </div>
+
+          <div class="z-item z-left reveal">
+            <span class="z-year">Achievements</span>
+            <div class="z-card">
+              <svg class="z-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+              <h3>Coding and Hackathon</h3>
+              <p class="z-sub">- Problem solving and teamwork</p>
+              <p class="z-text">Solved <b class="orange">200+</b> DSA problems on LeetCode.<br>Top <b class="orange">5 teams</b> out of 50+ in a college hackathon for a real-time collaboration tool.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section id="experience" class="section experience">
+      <canvas id="experienceParticles"></canvas>
+      <h2 class="title-line title-upper reveal">Work Experience</h2>
+
+      <div class="xp-timeline">
+
+        <article class="xp-item reveal">
+          <span class="xp-date">May 2026 &ndash; Present</span>
+          <!-- If you are no longer at CTC Tech Services, change "Present" above to the month you left (for example: Sep 2026). -->
+          <span class="xp-dot" aria-hidden="true"></span>
+          <div class="xp-card">
+            <h3>Software Developer Intern</h3>
+            <p class="xp-company"><span class="xp-badge">C</span> CTC Tech Services</p>
+            <ul class="xp-points">
+              <li>Designed an on-prem <b class="orange">log observability agent</b> for a Finacle-based core banking system, processing <b class="orange">50,000+</b> daily REST/FI XML/ISO8583 transactions with zero-duplicate incremental offset tracking across rotating log files.</li>
+              <li>Built a hot-reloadable regex detection engine and a <b class="orange">Redis-backed</b> fingerprint deduplication system (hash + TTL window), cutting duplicate alerts by <b class="orange">90%</b> and eliminating WhatsApp alert storms.</li>
+              <li>Designed a multi-bank, multi-country incident schema with audit-compliant separation of raw log events and operational incidents. Used <b class="orange">ShedLock</b> and <b class="orange">Resilience4j</b> to prevent duplicate job execution across pods, improving notification reliability by <b class="orange">70%</b> and cutting manual log investigation by <b class="orange">85%</b>.</li>
+            </ul>
+            <ul class="xp-tags">
+              <li>Java</li><li>Spring Boot</li><li>Redis</li><li>ShedLock</li><li>Resilience4j</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="xp-item reveal">
+          <span class="xp-date">May 2024 &ndash; May 2025</span>
+          <span class="xp-dot" aria-hidden="true"></span>
+          <div class="xp-card">
+            <h3>Backend Developer Intern</h3>
+            <p class="xp-company"><span class="xp-badge">P</span> Peakprosys</p>
+            <ul class="xp-points">
+              <li>Designed and deployed <b class="orange">15+</b> high-performance RESTful APIs using Spring Boot and MongoDB for production.</li>
+              <li>Implemented <b class="orange">2FA</b>, brute-force protection and <b class="orange">TOTP</b> authentication using Spring Security, reducing unauthorized access risk.</li>
+              <li>Optimized response times through efficient data structures and query optimization, and worked in a 6-member Agile team on sprint planning, code reviews and feature delivery.</li>
+            </ul>
+            <ul class="xp-tags">
+              <li>Java</li><li>Spring Boot</li><li>MongoDB</li><li>Spring Security</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="section contact">
+      <div class="wrap">
+        <h2 class="contact-title reveal">Get in Touch</h2>
+
+        <div class="contact-grid">
+          <form class="contact-form reveal" id="contactForm" method="POST" action="https://formspree.io/f/mnpnrzbv" novalidate>
+            <p class="form-label">Send me a short message</p>
+
+            <label class="field">
+              <span class="sr-only">Name</span>
+              <input type="text" name="name" placeholder="Name" autocomplete="name" required>
+            </label>
+
+            <label class="field">
+              <span class="sr-only">Email address</span>
+              <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
+            </label>
+
+            <label class="field">
+              <span class="sr-only">Message</span>
+              <textarea name="message" rows="5" placeholder="Message" required></textarea>
+            </label>
+
+            <button class="btn-send" type="submit">
+              Send Message
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#062b1a"/><path d="M9.5 7.5v9l7-4.5z" fill="#0ce080"/></svg>
+            </button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="contact-info reveal">
+            <div class="info-row">
+              <span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 4.2V18h16V8.2l-8 5.3-8-5.3zM4.8 6L12 10.8 19.2 6H4.8z" fill="currentColor"/></svg></span>
+              <div>
+                <p class="info-label">Email:</p>
+                <a class="info-value" href="mailto:shubhamkale.sits.comp@gmail.com">Write a letter</a>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <span class="info-icon"><svg viewBox="0 0 128 128" aria-hidden="true"><path fill="currentColor" d="M116 3H12a8.91 8.91 0 00-9 8.8v104.42a8.91 8.91 0 009 8.78h104a8.93 8.93 0 009-8.81V11.77A8.93 8.93 0 00116 3zM39.17 107H21.06V48.73h18.11zm-9-66.21a10.5 10.5 0 1110.49-10.5 10.5 10.5 0 01-10.54 10.48zM107 107H88.89V78.65c0-6.75-.12-15.44-9.41-15.44s-10.87 7.36-10.87 15V107H50.53V48.73h17.36v8h.24c2.42-4.58 8.32-9.41 17.13-9.41C103.6 47.28 107 59.35 107 75z"/></svg></span>
+              <div>
+                <p class="info-label">LinkedIn:</p>
+                <a class="info-value" href="https://www.linkedin.com/in/kale-shubham" target="_blank" rel="noopener">kale-shubham</a>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg></span>
+              <div>
+                <p class="info-label">Location:</p>
+                <p class="info-value">Pune, Maharashtra</p>
+              </div>
+            </div>
+
+            <iframe class="map" title="Map of Pune" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=Pune%2C%20Maharashtra&amp;z=11&amp;output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Shubham Kale. Built with HTML, CSS and JavaScript.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
