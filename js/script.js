@@ -162,7 +162,7 @@ document.querySelectorAll('.stat-img').forEach((img) => {
 //   1) Create a free form at formspree.io
 //   2) Paste its URL below, for example: 'https://formspree.io/f/abcdwxyz'
 // ---------------------------------------------------------------
-const FORM_ENDPOINT = 'https://formspree.io/f/mnpnrzbv';
+const FORM_ENDPOINT = '';
 const MY_EMAIL = 'shubhamkale.sits.comp@gmail.com';
 
 const form = document.getElementById('contactForm');
@@ -282,105 +282,93 @@ if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
   });
 }
 
-document.querySelectorAll('.pin-card').forEach(card => {
-
-    card.addEventListener('mousemove', e => {
-
-        const rect = card.getBoundingClientRect();
-
-        card.style.setProperty(
-            '--mx',
-            ((e.clientX - rect.left) / rect.width) * 100 + '%'
-        );
-
-        card.style.setProperty(
-            '--my',
-            ((e.clientY - rect.top) / rect.height) * 100 + '%'
-        );
+// ---------------------------------------------------------------
+// 12. PROJECTS: spotlight glow that follows the cursor on each card
+// ---------------------------------------------------------------
+if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
+  document.querySelectorAll('.pin-card').forEach((card) => {
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
     });
-
-});
-
-function createParticles(canvasId){
-
-    const canvas=document.getElementById(canvasId);
-
-    if(!canvas) return;
-
-    const ctx=canvas.getContext('2d');
-
-    let w,h;
-
-    function resize(){
-        w=canvas.parentElement.clientWidth;
-        h=canvas.parentElement.clientHeight;
-        canvas.width=w;
-        canvas.height=h;
-    }
-
-    resize();
-
-    // The section's real height is only known after layout/images settle,
-    // so keep re-measuring instead of sizing the canvas just once.
-    if ('ResizeObserver' in window) {
-        new ResizeObserver(resize).observe(canvas.parentElement);
-    } else {
-        window.addEventListener('load', resize);
-        setTimeout(resize, 500);
-        setTimeout(resize, 1500);
-    }
-
-    const particles=[...Array(40)].map(()=>({
-        x:Math.random()*w,
-        y:Math.random()*h,
-        vx:(Math.random()-.5)*0.4,
-        vy:(Math.random()-.5)*0.4
-    }));
-
-    function animate(){
-
-        ctx.clearRect(0,0,w,h);
-
-        particles.forEach(a=>{
-
-            a.x+=a.vx;
-            a.y+=a.vy;
-
-            if(a.x<0||a.x>w) a.vx*=-1;
-            if(a.y<0||a.y>h) a.vy*=-1;
-
-            ctx.fillStyle='#19e6c1';
-            ctx.fillRect(a.x,a.y,2,2);
-
-            particles.forEach(b=>{
-
-                const d=Math.hypot(
-                    a.x-b.x,
-                    a.y-b.y
-                );
-
-                if(d<120){
-
-                    ctx.strokeStyle=
-                        `rgba(79,124,255,${1-d/120})`;
-
-                    ctx.beginPath();
-                    ctx.moveTo(a.x,a.y);
-                    ctx.lineTo(b.x,b.y);
-                    ctx.stroke();
-                }
-
-            });
-
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    window.addEventListener('resize',resize);
+  });
 }
 
-createParticles('codingParticles');
-createParticles('experienceParticles');
+// ---------------------------------------------------------------
+// 13. EXPERIENCE: drifting particle-network background (plain canvas, no library)
+//     Dots float slowly; any two dots close enough get a faint line between them.
+// ---------------------------------------------------------------
+(function particleNetwork() {
+  const canvas = document.querySelector('.xp-network');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const section = canvas.closest('.experience');
+
+  let dots = [];
+  let w = 0, h = 0;
+  const LINK_DIST = 170;       // dots closer than this (in px) get a connecting line
+
+  function sizeCanvas() {
+    const rect = section.getBoundingClientRect();
+    w = canvas.width = rect.width;
+    h = canvas.height = rect.height;
+    const count = Math.min(140, Math.round((w * h) / 16000));   // roughly one dot per 16,000 square px
+    dots = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25,
+      r: Math.random() * 1.6 + 0.6,
+    }));
+  }
+
+  function drawFrame() {
+    ctx.clearRect(0, 0, w, h);
+
+    // move each dot, and keep it inside the section by bouncing off the edges
+    for (const d of dots) {
+      d.x += d.vx; d.y += d.vy;
+      if (d.x < 0 || d.x > w) d.vx *= -1;
+      if (d.y < 0 || d.y > h) d.vy *= -1;
+    }
+
+    // lines between nearby dots: closer pairs get a brighter, thicker line
+    for (let i = 0; i < dots.length; i++) {
+      for (let j = i + 1; j < dots.length; j++) {
+        const a = dots[i], b = dots[j];
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        if (dist < LINK_DIST) {
+          ctx.strokeStyle = `rgba(25, 230, 193, ${0.22 * (1 - dist / LINK_DIST)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+    }
+
+    // dots on top of the lines
+    ctx.fillStyle = 'rgba(94, 234, 212, 0.75)';
+    for (const d of dots) {
+      ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+
+  function loop() { drawFrame(); raf = requestAnimationFrame(loop); }
+
+  let raf = null;
+  function start() { if (!raf) raf = requestAnimationFrame(loop); }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+
+  sizeCanvas();
+  if (prefersReducedMotion) {
+    drawFrame(); // draw one still frame, no animation loop
+  } else {
+    start();
+    // pause the animation while the section is off-screen, to save battery
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? start() : stop()));
+    }, { threshold: 0.01 }).observe(section);
+  }
+
+  window.addEventListener('resize', () => { sizeCanvas(); if (prefersReducedMotion) drawFrame(); });
+})();

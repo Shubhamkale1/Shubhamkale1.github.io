@@ -328,6 +328,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .proj-sub svg { width: 34px; height: 34px; }
 
 .pin-card {
+  position: relative;
   background: rgba(8, 10, 34, 0.52);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -335,38 +336,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: clamp(24px, 3vw, 48px);
   margin-bottom: clamp(36px, 5vw, 72px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;    /* keeps the glow from spilling past the rounded corners */
 }
 
-.pin-card{
-    position:relative;
-    overflow:hidden;
+/* Spotlight: a soft light that follows the cursor. JS sets --mx/--my as the mouse moves. */
+.pin-card::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), rgba(25, 230, 193, 0.16), transparent 60%);
+  opacity: 0; transition: opacity 0.4s;
 }
-
-.pin-card::before{
-    content:"";
-    position:absolute;
-    inset:-20%;
-    background:
-      radial-gradient(
-        circle at var(--mx,50%) var(--my,50%),
-        rgba(25,230,193,.22),
-        transparent 35%
-      );
-    opacity:0;
-    transition:.25s;
-    pointer-events:none;
-}
-
-.pin-card:hover::before{
-    opacity:1;
-}
-
-.pin-card:hover{
-    transform:translateY(-8px);
-    box-shadow:
-      0 0 25px rgba(25,230,193,.25),
-      0 0 50px rgba(79,124,255,.15);
-}
+.pin-card:hover::before { opacity: 1; }
+.pin-card > * { position: relative; z-index: 1; }   /* content stays above the glow layer */
 
 .pin-card h3 {
   color: var(--teal); font-weight: 400;
@@ -466,12 +446,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ============================================================
    10. CODING PROFILE
    ============================================================ */
-.coding { background: #0f172b; }
+.coding { background: #0f172b; padding-block: clamp(48px, 6.5vw, 90px); }
 
 .coding-grid {
-  max-width: 1200px; margin: clamp(36px, 5vw, 64px) auto 0;
+  max-width: 1100px; margin: clamp(22px, 3vw, 38px) auto 0;
   padding-inline: 24px;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 28px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px;
 }
 
 .stat-card {
@@ -577,14 +557,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ============================================================
    13. EXPERIENCE
    ============================================================ */
-.experience { background: #070a12; }
+.experience { background: #070a12; position: relative; overflow: hidden; }
+
+/* Canvas drawn by JS: a slowly-drifting network of connected dots behind the whole section */
+.xp-network { position: absolute; inset: 0; z-index: 0; opacity: 0.8; }
 
 .xp-timeline {
-  --xp-pad: clamp(150px, 20vw, 380px);
-  position: relative;
-  max-width: 1500px; margin: clamp(40px, 6vw, 80px) auto 0;
+  --xp-pad: clamp(124px, 17vw, 320px);
+  position: relative; z-index: 1;   /* sits above the canvas */
+  max-width: 1260px; margin: clamp(34px, 5vw, 66px) auto 0;
   padding-inline: clamp(16px, 4vw, 60px);
-  display: grid; gap: clamp(32px, 5vw, 64px);
+  display: grid; gap: clamp(26px, 4vw, 52px);
   padding-left: var(--xp-pad);
 }
 
@@ -596,15 +579,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .xp-item { position: relative; }
 
 .xp-date {
-  position: absolute; right: calc(100% + 24px); top: 26px;
-  font-size: clamp(1.05rem, 1.9vw, 1.8rem); font-weight: 600; line-height: 1.3;
+  position: absolute; right: calc(100% + 20px); top: 22px;
+  font-size: clamp(0.9rem, 1.6vw, 1.5rem); font-weight: 600; line-height: 1.3;
   text-align: right; width: max-content;
-  max-width: calc(var(--xp-pad) - 48px);   /* wraps onto 2 lines instead of leaving the screen */
+  max-width: calc(var(--xp-pad) - 40px);   /* wraps onto 2 lines instead of leaving the screen */
 }
 
 .xp-dot {
-  position: absolute; left: -20px; top: 30px; width: 22px; height: 22px; border-radius: 50%;
-  background: #fff; border: 5px solid #7c6bff;
+  position: absolute; left: -17px; top: 25px; width: 18px; height: 18px; border-radius: 50%;
+  background: #fff; border: 4px solid #7c6bff;
   transform: translateX(-2px);
 }
 
@@ -612,21 +595,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: linear-gradient(180deg, #06342f 0%, #04211f 100%);
   border-bottom: 3px solid #0e6b56;
   border-radius: 8px;
-  padding: clamp(16px, 2vw, 26px);
+  padding: clamp(18px, 2.4vw, 33px);
   transition: transform 0.35s, box-shadow 0.35s;
 }
 .xp-card:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(20, 224, 176, 0.15); }
 
-.xp-card h3 { font-weight: 400; font-size: clamp(1.15rem, 1.6vw, 1.5rem); }
+.xp-card h3 { font-weight: 400; font-size: clamp(1.25rem, 2vw, 1.7rem); }
 
-.xp-company { display: flex; align-items: center; gap: 10px; margin: 6px 0 10px; font-size: clamp(1.1rem, 1.8vw, 1.6rem); font-weight: 700; line-height: 1.2; }
-.xp-badge { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: #f7c531; color: #1a1a1a; font-size: 1.2rem; font-weight: 800; flex: none; }
+.xp-company { display: flex; align-items: center; gap: 12px; margin: 8px 0 13px; font-size: clamp(1.3rem, 2.4vw, 2.1rem); font-weight: 700; line-height: 1.2; }
+.xp-badge { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: #f7c531; color: #1a1a1a; font-size: 1.45rem; font-weight: 800; flex: none; }
 
-.xp-points { display: grid; gap: 8px; font-size: 0.95rem; line-height: 1.5; }
-.xp-points li { position: relative; padding-left: 18px; }
+.xp-points { display: grid; gap: 11px; font-size: clamp(0.92rem, 1.2vw, 1.1rem); line-height: 1.6; }
+.xp-points li { position: relative; padding-left: 20px; }
 .xp-points li::before { content: "\2022"; position: absolute; left: 0; top: 0; }
 
-.xp-tags { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 14px; color: var(--mint); font-size: 0.95rem; font-weight: 600; }
+.xp-tags { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 19px; color: var(--mint); font-size: 0.95rem; font-weight: 600; }
 .xp-tags li::before { content: "\2713"; margin-right: 8px; }
 
 /* ============================================================
@@ -733,17 +716,17 @@ a.info-value:hover { color: var(--green); text-decoration: underline; text-under
 /* --- Count-up numbers --- */
 .counters {
   display: flex; flex-wrap: wrap; justify-content: center;
-  gap: clamp(24px, 5vw, 80px);
-  max-width: 1100px; margin: clamp(32px, 5vw, 56px) auto 0; padding-inline: 24px;
+  gap: clamp(18px, 3.4vw, 56px);
+  max-width: 1000px; margin: clamp(18px, 2.6vw, 30px) auto 0; padding-inline: 24px;
 }
-.counters li { text-align: center; min-width: 190px; }
+.counters li { text-align: center; min-width: 150px; }
 .counters b {
   display: block; font-weight: 800; line-height: 1;
-  font-size: clamp(3rem, 6.4vw, 5.2rem);
+  font-size: clamp(2.3rem, 4.6vw, 3.7rem);
   background: linear-gradient(90deg, #19e6c1, #5b8cff);   /* gradient text */
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.counters span { display: block; margin-top: 10px; color: var(--muted); }
+.counters span { display: block; margin-top: 6px; color: var(--muted); font-size: 0.95rem; }
 
 /* --- Card: the outer article only reveals; the inner .stat-face tilts --- */
 .stat-card { background: none; border: 0; padding: 0; box-shadow: none; }
@@ -754,7 +737,7 @@ a.info-value:hover { color: var(--green); text-decoration: underline; text-under
 
 .stat-face {
   position: relative;
-  padding: 26px; text-align: center;
+  padding: 18px; text-align: center;
   border-radius: 20px;
   border: 2px solid transparent;
   /* two backgrounds: the fill (padding-box) and a gradient that shows only in the border area */
@@ -794,9 +777,12 @@ a.info-value:hover { color: var(--green); text-decoration: underline; text-under
    ============================================================ */
 .edu-scene {
   position: relative;
-  overflow: hidden;
+  overflow: hidden;    /* keeps drifting clouds inside the rounded scene */
   background:
-    url("../assets/college.svg") center center / cover no-repeat fixed,
+    url("../assets/college.svg") center 64% / min(1150px, 96%) no-repeat,
+    radial-gradient(circle at 78% 14%, rgba(255, 240, 180, 0.9) 0 6%, transparent 7%),
+    radial-gradient(60% 40% at 15% 90%, #f0c9a0, transparent 70%),
+    radial-gradient(60% 45% at 85% 100%, #7bb86f, transparent 70%),
     linear-gradient(180deg, #63e3d3 0%, #8ee9cf 45%, #d6c7a1 100%);
 }
 
@@ -861,30 +847,6 @@ a.info-value:hover { color: var(--green); text-decoration: underline; text-under
   .edu-scene { background-size: 140% auto, auto, auto, auto, auto; background-position: center 70%, 0 0, 0 0, 0 0, 0 0; }
   .js .z-left.reveal:not(.in), .js .z-right.reveal:not(.in) { transform: translateY(34px); }
   .z-item::after { left: 14px; top: 20px; width: 18px; height: 18px; border-width: 4px; }
-  @media (max-width: 720px) {
-  .edu-scene {
-    background-attachment: scroll, scroll;
-    background-position: center 70%, 0 0;
-  }
-}
+  .js .z-item .z-year { transform: scale(0.6); transform-origin: left center; }
   .js .z-item.in .z-year { transform: scale(1); }
 }
-
-.coding,
-.experience{
-    position:relative;
-    overflow:hidden;
-}
-
-#codingParticles,
-#experienceParticles{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    opacity:.6;
-    z-index:0;
-}
-
-.xp-timeline, .coding-grid, .counters { position: relative; z-index: 1; }
