@@ -299,11 +299,9 @@ if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
 // 13. EXPERIENCE: drifting particle-network background (plain canvas, no library)
 //     Dots float slowly; any two dots close enough get a faint line between them.
 // ---------------------------------------------------------------
-(function particleNetwork() {
-  const canvas = document.querySelector('.xp-network');
-  if (!canvas) return;
+function startParticleNetwork(canvas) {
   const ctx = canvas.getContext('2d');
-  const section = canvas.closest('.experience');
+  const section = canvas.closest('section');
 
   let dots = [];
   let w = 0, h = 0;
@@ -371,4 +369,8 @@ if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
   }
 
   window.addEventListener('resize', () => { sizeCanvas(); if (prefersReducedMotion) drawFrame(); });
-})();
+}
+
+// One independent network per section that has a .section-network canvas
+// (currently: Work Experience and Coding Profile)
+document.querySelectorAll('.section-network').forEach(startParticleNetwork);

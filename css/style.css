@@ -446,7 +446,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ============================================================
    10. CODING PROFILE
    ============================================================ */
-.coding { background: #0f172b; padding-block: clamp(48px, 6.5vw, 90px); }
+.coding { background: #0f172b; padding-block: clamp(48px, 6.5vw, 90px); position: relative; overflow: hidden; }
+.coding > :not(.section-network) { position: relative; z-index: 1; }   /* everything else sits above the canvas */
 
 .coding-grid {
   max-width: 1100px; margin: clamp(22px, 3vw, 38px) auto 0;
@@ -558,9 +559,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    13. EXPERIENCE
    ============================================================ */
 .experience { background: #070a12; position: relative; overflow: hidden; }
+.experience > :not(.section-network) { position: relative; z-index: 1; }   /* title + timeline sit above the canvas */
 
 /* Canvas drawn by JS: a slowly-drifting network of connected dots behind the whole section */
-.xp-network { position: absolute; inset: 0; z-index: 0; opacity: 0.8; }
+.section-network { position: absolute; inset: 0; z-index: 0; opacity: 0.8; }
 
 .xp-timeline {
   --xp-pad: clamp(124px, 17vw, 320px);
