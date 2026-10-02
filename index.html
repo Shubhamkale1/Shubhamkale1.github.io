@@ -241,7 +241,7 @@
 
     <!-- ===================== CODING PROFILE ===================== -->
     <section id="coding" class="section coding">
-      <canvas class="section-network" aria-hidden="true"></canvas>
+      <canvas id="codingParticles"></canvas>
       <h2 class="title-line reveal">Coding Profile</h2>
 
       <!-- Numbers count up from 0 when this row scrolls into view -->
@@ -319,12 +319,9 @@
     <!-- ===================== EDUCATION ===================== -->
     <section id="education" class="section education">
       <div class="edu-scene">
-        <!-- This layer sticks to the screen while the cards below scroll past it -->
-        <div class="edu-bg" aria-hidden="true">
-          <span class="cloud c1"></span>
-          <span class="cloud c2"></span>
-          <span class="cloud c3"></span>
-        </div>
+        <span class="cloud c1" aria-hidden="true"></span>
+        <span class="cloud c2" aria-hidden="true"></span>
+        <span class="cloud c3" aria-hidden="true"></span>
         <h2 class="title-line reveal">Education</h2>
 
         <div class="zigzag">
@@ -386,7 +383,7 @@
 
     <!-- ===================== EXPERIENCE ===================== -->
     <section id="experience" class="section experience">
-      <canvas class="section-network" aria-hidden="true"></canvas>
+      <canvas id="experienceParticles"></canvas>
       <h2 class="title-line title-upper reveal">Work Experience</h2>
 
       <div class="xp-timeline">
@@ -435,7 +432,7 @@
         <h2 class="contact-title reveal">Get in Touch</h2>
 
         <div class="contact-grid">
-          <form class="contact-form reveal" id="contactForm" novalidate>
+          <form class="contact-form reveal" id="contactForm" method="POST" action="https://formspree.io/f/mnpnrzbv" novalidate>
             <p class="form-label">Send me a short message</p>
 
             <label class="field">
